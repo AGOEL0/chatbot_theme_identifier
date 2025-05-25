@@ -1,25 +1,23 @@
-# LangChain Core
+# LangChain Core and Integrations
 langchain
 langchain-core
-
-# OpenAI Integration
 langchain-openai
-openai
-
-# Anthropic Integration
 langchain-anthropic
-
-# Google Gemini (PaLM) Integration
 langchain-google-genai
-google-generativeai
-
-# Hugging Face Integration
 langchain-huggingface
+langchain-groq
+
+# LLM APIs
+openai
+google-generativeai
 transformers
 huggingface-hub
 
-# Groq Integration
-langchain-groq
+# Vector Database and Search
+faiss-cpu
+
+# PDF Handling
+PyPDF2
 
 # Environment Variable Management
 python-dotenv
@@ -27,3 +25,17 @@ python-dotenv
 # Machine Learning Utilities
 numpy
 scikit-learn
+
+# Optional: Web scraping (if used)
+beautifulsoup4
+requests
+
+# Optional: Data manipulation
+pandas
+
+# Optional: Text preprocessing
+tqdm
+
+# Streamlit (for deployment!)
+streamlit
+

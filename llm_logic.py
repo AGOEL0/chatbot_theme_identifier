@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 import os
 import easyocr
+load_dotenv()
 
 api_key = os.getenv("GROQ_API_KEY")
 model = ChatGroq(model_name="llama3-70b-8192", api_key=api_key)

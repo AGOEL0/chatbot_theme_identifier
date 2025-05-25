@@ -9,6 +9,9 @@ from PyPDF2 import PdfReader
 import pytesseract
 from PIL import Image
 import pytesseract
+from dotenv import load_dotenv
+load_dotenv()
+# Initialize model
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 

@@ -42,7 +42,7 @@ def get_pdf_text(pdf_file):
             text += extracted
     return text
 
-  reader = easyocr.Reader(['en'])
+reader = easyocr.Reader(['en'])
 
 def get_image_text(image_file):
     text_list = reader.readtext(image_file, detail=0)

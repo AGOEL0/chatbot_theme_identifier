@@ -12,6 +12,7 @@ import pytesseract
 from dotenv import load_dotenv
 pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 import os
+import easyocr
 
 api_key = os.getenv("GROQ_API_KEY")
 model = ChatGroq(model_name="llama3-70b-8192", api_key=api_key)
@@ -41,10 +42,11 @@ def get_pdf_text(pdf_file):
             text += extracted
     return text
 
+  reader = easyocr.Reader(['en'])
+
 def get_image_text(image_file):
-    image = Image.open(image_file)
-    text = pytesseract.image_to_string(image)
-    return text
+    text_list = reader.readtext(image_file, detail=0)
+    return ' '.join(text_list)
 
 def get_text_chunks(text):
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)

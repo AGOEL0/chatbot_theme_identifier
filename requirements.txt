@@ -43,3 +43,7 @@ python-dotenv
 # Other (if needed later)
 regex
 
+easyocr
+torch
+opencv-python-headless
+

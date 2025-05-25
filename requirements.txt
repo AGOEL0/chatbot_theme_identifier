@@ -1,43 +1,45 @@
 # LangChain Core and Integrations
 langchain
 langchain-core
+langchain-community  # required for some vectorstores and utilities
 langchain-openai
 langchain-anthropic
 langchain-google-genai
 langchain-huggingface
 langchain-groq
 
-# LLM APIs
+# LLM APIs and Transformers
 openai
 google-generativeai
 transformers
 huggingface-hub
 
-# Vector Database and Search
+# Vector Databases and Search
 faiss-cpu
 
 # PDF Handling
 PyPDF2
 
-# Environment Variable Management
-python-dotenv
+# Image Handling and OCR
+Pillow
+pytesseract
 
-# Machine Learning Utilities
+# Machine Learning and Data Utilities
 numpy
 scikit-learn
-
-# Optional: Web scraping (if used)
-beautifulsoup4
-requests
-
-# Optional: Data manipulation
 pandas
-
-# Optional: Text preprocessing
 tqdm
 
-# Streamlit (for deployment!)
+# Web Utilities (optional but often useful)
+requests
+beautifulsoup4
+
+# Streamlit for the frontend
 streamlit
 
-Pillow
+# Environment Management
+python-dotenv
+
+# Other (if needed later)
+regex
 

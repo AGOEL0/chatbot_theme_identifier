@@ -39,3 +39,5 @@ tqdm
 # Streamlit (for deployment!)
 streamlit
 
+Pillow
+

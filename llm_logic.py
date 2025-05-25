@@ -10,13 +10,11 @@ import pytesseract
 from PIL import Image
 import pytesseract
 from dotenv import load_dotenv
-load_dotenv()
-# Initialize model
+pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+import os
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-# Initialize models
-model = ChatGroq(model_name="llama3-70b-8192")
+api_key = os.getenv("GROQ_API_KEY")
+model = ChatGroq(model_name="llama3-70b-8192", api_key=api_key)
 parser = StrOutputParser()
 
 prompt = PromptTemplate(

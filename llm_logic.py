@@ -8,10 +8,15 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from PyPDF2 import PdfReader
 import pytesseract
 from PIL import Image
-import pytesseract
-from dotenv import load_dotenv
-pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+import numpy as np
 import os
+import easyocr
+from dotenv import load_dotenv
+
+# Set tesseract cmd path
+pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+
+# Load environment variables
 load_dotenv()
 
 api_key = os.getenv("GROQ_API_KEY")
@@ -42,10 +47,32 @@ def get_pdf_text(pdf_file):
             text += extracted
     return text
 
-def get_image_text(image_file):
-    image = Image.open(image_file)
-    text = pytesseract.image_to_string(image)
-    return text
+# Initialize easyocr reader once
+reader = easyocr.Reader(['en'])
+
+import numpy as np
+from PIL import Image
+
+def get_image_text(image_input):
+    # if input is a PIL Image, convert to numpy array
+    if isinstance(image_input, Image.Image):
+        image_input = np.array(image_input)
+    
+    # if input is a file object, read bytes and convert to numpy array
+    elif hasattr(image_input, "read"):
+        from io import BytesIO
+        image_bytes = image_input.read()
+        image_input = np.array(Image.open(BytesIO(image_bytes)))
+    
+    # if input is bytes, convert to numpy array
+    elif isinstance(image_input, bytes):
+        from io import BytesIO
+        image_input = np.array(Image.open(BytesIO(image_input)))
+    
+    # if input is string (filepath), just pass it as is to easyocr
+    
+    text_list = reader.readtext(image_input, detail=0)
+    return ' '.join(text_list)
 
 def get_text_chunks(text):
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
